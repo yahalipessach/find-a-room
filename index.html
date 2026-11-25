@@ -193,21 +193,10 @@
   <li>Open <a href="https://timetable.ucl.ac.uk/plan" target="_blank" rel="noopener">timetable.ucl.ac.uk/plan</a>, open your bookmarks and tap it</li>
 </ol>
 
-<h2>All rooms</h2>
-<div id="dir"></div>
 
-<p class="note small">Not an official UCL page.</p>
 
 <script>
 (function(){
-  var RAW = "003~110,116,304,305,B05,G02,G03,G07,G17,G22,G23,G26|004~G02,G03,G04,G07,S02B|012~11,20,23,42,44,9|013~101,102,218,223,B05,B09,B12,B15,G04,G07,G08|024~313,B32,G09,G10|025~107,B26,B30|026~105,106,204,206,304|028~101,102,203,301|029~B15|030~103,104,G06|032~101,102,B03|033~102|035~101,206,207,B02,B03,B09,B10,G1,G6,G9|037~G01,G02|040~112H,114,123,130,132,133,215,216,217,219,233,235,243,320,321,B29,G31|046~250,251,252,253,254,255|056~103,124,221,302,321,402,G08,G20,LG08,LG10,LG11,LG16,LG17,LG20,LG21,LG22,LG23,LG26,SB31,XG01,XG03|082~2.08N,2.08S,3.08N,3.08S,4.08N,4.08S,G.09,G.10,G.11,G.12|088~106,207,208,209,211B,306,308,309,311,B06,G09|090~117,209,308,322C,405,410,412,501,612,615,B13,B50,B54a,G6|107~B03,B04,B05,B06,B16,B19,B20|117~G01,G03,G04|126~128C,129,130A,131B,132A,230A,345,346,347,431,432,433A,503,519,532,534,535,536,537|134~B03,B05,G03|371~103,105", NAMES = {"107":"Drayton House","117":"29 Tavistock Square","126":"14-16 Taviton Street","134":"36-38 Gordon Square","371":"49-51 Gordon Square","003":"North-West Wing","004":"Slade (North Wing)","012":"South Wing","013":"Chadwick","024":"26 Gordon Square","025":"25 Gordon Square","026":"24 Gordon Square","028":"23 Gordon Square","029":"22 Gordon Square","030":"21 Gordon Square","032":"20 Gordon Square","033":"19 Gordon Square","035":"16-18 Gordon Square","037":"Medawar","040":"Foster Court","046":"1-4 Malet Place","056":"Bentham House","082":"22 Gordon Street","088":"Gordon House","090":"31-34 Gordon Square"}, PREF = ["035","040","032","024","025","028","030","090","026","029","033","134","371","088","126","046","003","004","012","013","037","056","107","117","082"];
-  var rows = RAW.split("|").map(function(l){ var p = l.split("~"); return { s: p[0], r: p[1].split(",") }; });
-  rows.sort(function(a, b){ return PREF.indexOf(a.s) - PREF.indexOf(b.s); });
-  document.getElementById("dir").innerHTML = rows.map(function(b){
-    return '<div class="bld"><b>' + (NAMES[b.s] || b.s) + '</b><div class="chips">' + b.r.map(function(r){
-      return '<a href="https://timetable.ucl.ac.uk/rooms/' + b.s + '/' + encodeURIComponent(r) + '" target="_blank" rel="noopener">' + r + '</a>';
-    }).join("") + '</div></div>';
-  }).join("");
   var bm = document.getElementById("bm");
   bm.addEventListener("click", function(e){ e.preventDefault(); });
   document.getElementById("copy").addEventListener("click", function(){
